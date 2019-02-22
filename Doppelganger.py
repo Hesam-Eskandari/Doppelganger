@@ -1,5 +1,5 @@
 from cv2 import imshow, circle, putText, FONT_HERSHEY_SIMPLEX, waitKey, destroyAllWindows, line
-from cv2 import VideoWriter, imread, resize, destroyWindow, namedWindow, setMouseCallback
+from cv2 import VideoWriter, imread, resize, destroyWindow, namedWindow, setMouseCallback, EVENT_FLAG_LBUTTON
 from numpy import shape, array, ones
 from random import sample
 from numpy import sum as np_sum
@@ -18,7 +18,7 @@ def rectangle(ground,x_c,y_c,length,width,thick,fill,color):
         return rectangle(ground,x_c,y_c, length-4, width-4,thick,fill, color)
 
 def left_click(event,x,y,flags,param):
-    if event == cv2.EVENT_FLAG_LBUTTON and work_g[y,x,1] == 0:
+    if event == EVENT_FLAG_LBUTTON and work_g[y,x,1] == 0:
         distance=[]
         for item in coords:
             distance.append((item[0]-x)**2+(item[1]-y)**2)
