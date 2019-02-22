@@ -1,5 +1,5 @@
 from cv2 import imshow, circle, putText, FONT_HERSHEY_SIMPLEX, waitKey, destroyAllWindows, line
-from cv2 import VideoWriter, imread, resize, destroyWindow
+from cv2 import VideoWriter, imread, resize, destroyWindow, namedWindow, setMouseCallback
 from numpy import shape, array, ones
 from random import sample
 from numpy import sum as np_sum
@@ -35,13 +35,12 @@ def load_picture(length,width):
         image.append(img)
     return image
 
+target = []
 dim_y = 600
 dim_x = int(dim_y*1.618+0.5)
 out = VideoWriter('Doppelganger.mp4',4, 30, (dim_x,dim_y))
-cv2.namedWindow('Doppelganger')
-cv2.setMouseCallback('Doppelganger', left_click)
-dim_y = 600
-dim_x = int(dim_y*1.618+0.5)
+namedWindow('Doppelganger')
+setMouseCallback('Doppelganger', left_click)
 width = int(dim_y/6)
 length = int(width*1.618+0.5)//2*2
 ground = ones((dim_y,dim_x,3))*255
